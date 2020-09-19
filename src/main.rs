@@ -3,7 +3,7 @@ extern crate crypto; // aka rust-crypto
 use std::io::{Cursor, Write};
 use std::fmt::{Display, Formatter, Result};
 use std::str;
-use std::u64;
+use std::u128;
 use std::boxed::Box;
 use std::option::Option;
 use self::crypto::digest::Digest;
@@ -92,12 +92,14 @@ impl Block {
         res
     }
 
-    fn mine(&self) {
+    fn mine(&mut self) {
 
-        for i in 0..u128::max() {
-            self.nonce++;
+        for i in 0..u128::MAX {
+            self.nonce = self.nonce + 1;
 
-            if self.hash()
+            if self.hash()[..TARGET].iter().all(|v| v == 0) == [] {
+                return
+            }
         }
     }
 }
