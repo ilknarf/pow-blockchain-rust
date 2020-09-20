@@ -1,6 +1,5 @@
 extern crate crypto; // aka rust-crypto
 
-use std::io::{Write};
 use std::fmt::{Display, Formatter, Result};
 use std::str;
 use std::u128;
@@ -10,7 +9,7 @@ use self::crypto::digest::Digest;
 use self::crypto::sha3::Sha3;
 use hex::encode;
 
-const TARGET: usize = 3; // target number zeroes
+const TARGET: usize = 4; // target number zeroes
 const ODD: bool = TARGET % 2 == 1;
 const WHOLE_BYTES: usize = TARGET >> 1;
 
