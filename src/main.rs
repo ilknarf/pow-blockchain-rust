@@ -106,7 +106,6 @@ impl Display for Block {
             Err(_) => "Decoding error",
         };
 
-
         f.write_fmt(format_args!(
             "number: {}, last_block: {}, merkle_root: {}, nonce: {}, data: {}",
             &self.number,
